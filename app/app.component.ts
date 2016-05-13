@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 
-import { PlaylistComponent } from './spotify';
+import { PlaylistComponent } from './spotify/playlist/playlist.component';
 
 @Component({
   selector: 'random-song',

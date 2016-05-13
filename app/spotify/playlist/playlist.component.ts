@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SpotifyService } from '../shared';
+import { SpotifyService } from '../shared/spotify.service';
 
 @Component({
   selector: 'playlist',
-  templateUrl: 'app/songs/playlist-list/playlist-list.component.html'
+  templateUrl: 'app/spotify/playlist/playlist.component.html',
+  providers: [ SpotifyService ]
 })
 export class PlaylistComponent implements OnInit {
 
