@@ -1,3 +1,8 @@
-<li *ngFor="let playlist of playlists">
-  <p>{{playlist}}</p>
-</li>
+<div>
+  <form>
+    <select>
+      <option *ngFor="let playlist of playlists" >{{playlist}}</option>
+    </select>
+    <input type="submit" value="Estou com sorte">
+  </form>
+</div>

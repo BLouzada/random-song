@@ -7,7 +7,6 @@ import { PlaylistComponent } from './spotify/playlist/playlist.component';
   selector: 'random-song',
   template: `
   <h1>{{title}}</h1>
-  <p>Initial Commit</p>
   <router-outlet></router-outlet>
   `,
   directives: [ ROUTER_DIRECTIVES ],
