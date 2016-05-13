@@ -1,8 +1,9 @@
 <div>
-  <form>
-    <select>
-      <option *ngFor="let playlist of playlists" >{{playlist}}</option>
+  <form (ngSubmit)="searchSong()" >
+    <label>Escolha uma playlist</label>
+    <select [(ngModel)]="playlistName" required>
+      <option *ngFor="let playlist of playlists" [value]="playlist">{{playlist}}</option>
     </select>
-    <input type="submit" value="Estou com sorte">
+    <button type="submit">Estou com sorte</button>
   </form>
 </div>

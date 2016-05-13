@@ -13,12 +13,18 @@ export class PlaylistComponent implements OnInit {
 
   playlists: string[];
 
+  playlistName: string;
+
   getPlaylists() {
     this.spotifyService.getPlaylists().then(playlists => this.playlists = playlists);
   }
 
   ngOnInit() {
     this.getPlaylists();
+  }
+
+  searchSong(){
+    console.log(this.playlistName);
   }
 
 }
