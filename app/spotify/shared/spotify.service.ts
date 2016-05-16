@@ -15,6 +15,8 @@ export class SpotifyService {
 
   albums: Album[] = [];
 
+  albumHref: string;
+
   constructor(private http: Http) { }
 
   getAlbums() {

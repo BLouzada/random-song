@@ -10,8 +10,8 @@ import { TrackComponent } from './spotify/track/track.component';
   <h1>{{title}}</h1>
   <router-outlet></router-outlet>
   `,
-  directives: [ ROUTER_DIRECTIVES ],
-  providers: [ ROUTER_PROVIDERS ]
+  directives: [ROUTER_DIRECTIVES],
+  providers: [ROUTER_PROVIDERS]
 })
 @RouteConfig([{
   path: '/album',
@@ -19,10 +19,10 @@ import { TrackComponent } from './spotify/track/track.component';
   component: AlbumComponent,
   useAsDefault: true
 }, {
-  path: '/track',
-  name: 'Track',
-  component: TrackComponent
-}])
+    path: '/track',
+    name: 'Track',
+    component: TrackComponent
+  }])
 export class AppComponent {
   title = 'Random Song';
 }

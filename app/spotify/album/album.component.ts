@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router-deprecated';
 
 import { SpotifyService } from '../shared/spotify.service';
-
 import { Album } from '../shared/album'
 
+import { TrackComponent } from '../track/track.component';
+
 @Component({
-  selector: 'album',
+  selector: 'rs-album',
   templateUrl: 'app/spotify/album/album.component.html',
-  providers: [ SpotifyService ]
+  providers: [SpotifyService],
+  directives: [TrackComponent]
 })
 export class AlbumComponent implements OnInit {
 
-  constructor(private spotifyService: SpotifyService) { }
+  constructor(private spotifyService: SpotifyService, private router: Router) { }
 
   albums: Album[];
 
@@ -25,8 +28,8 @@ export class AlbumComponent implements OnInit {
     this.getAlbums();
   }
 
-  searchTrack(){
-    this.spotifyService.getTrackFromAlbum(this.albumHref).subscribe(track => console.log(track));
+  searchTrack() {
+    this.spotifyService.albumHref = this.albumHref;
+    this.router.navigate(['Track', {albumHref: this.albumHref}]);
   }
-
 }
