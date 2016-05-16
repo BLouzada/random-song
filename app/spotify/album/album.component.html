@@ -1,9 +1,9 @@
 <div>
-  <form (ngSubmit)="searchSong()" >
-    <label>Escolha um album</label>
+  <form (ngSubmit)="searchTrack()" >
+    <label>Choose an album</label>
     <select [(ngModel)]="albumHref" required>
       <option *ngFor="let album of albums" [value]="album.href">{{album.name}}</option>
     </select>
-    <button type="submit">Estou com sorte</button>
+    <button type="submit">Random song</button>
   </form>
 </div>

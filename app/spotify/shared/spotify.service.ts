@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Http, HTTP_PROVIDERS} from '@angular/http';
+import { Http, HTTP_PROVIDERS, Response } from '@angular/http';
 import { Component } from '@angular/core';
 
+import { Observable } from 'rxjs/Rx';
+
 import { Album } from './album'
+import { Track } from './track'
 
 @Component({
   providers: [HTTP_PROVIDERS]
@@ -11,7 +14,6 @@ import { Album } from './album'
 export class SpotifyService {
 
   albums: Album[] = [];
-  track: Object;
 
   constructor(private http: Http) { }
 
@@ -28,12 +30,24 @@ export class SpotifyService {
     return Promise.resolve(this.albums);
   }
 
-  getSongsFromAlbum(albumHref: string) {
-    this.http.get(albumHref).subscribe(res => {
-      let tracks = res.json().tracks.items;
-      this.track = tracks[Math.floor(Math.random() * tracks.length)];
-      console.log(this.track);
-    });
-    return Promise.resolve(this.track);
+  getTrackFromAlbum(albumHref: string): Observable<Track> {
+    return this.http.get(albumHref).map(this.extractData).catch(this.handleError);
+  }
+
+  private extractData(res: Response) {
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error('Response status: ' + res.status);
+    }
+    let tracks = res.json().tracks.items;
+    let randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+    let track = new Track();
+    track.name = randomTrack.name;
+    track.openOnSpotify = randomTrack.external_urls.spotify;
+    return track;
+  }
+  private handleError(error: any) {
+    let errMsg = error.message || 'Server error';
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }

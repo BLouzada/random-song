@@ -5,11 +5,11 @@ import { SpotifyService } from '../shared/spotify.service';
 import { Album } from '../shared/album'
 
 @Component({
-  selector: 'playlist',
-  templateUrl: 'app/spotify/playlist/playlist.component.html',
+  selector: 'album',
+  templateUrl: 'app/spotify/album/album.component.html',
   providers: [ SpotifyService ]
 })
-export class PlaylistComponent implements OnInit {
+export class AlbumComponent implements OnInit {
 
   constructor(private spotifyService: SpotifyService) { }
 
@@ -17,16 +17,16 @@ export class PlaylistComponent implements OnInit {
 
   albumHref: string;
 
-  getPlaylists() {
+  getAlbums() {
     this.spotifyService.getAlbums().then(albums => this.albums = albums);
   }
 
   ngOnInit() {
-    this.getPlaylists();
+    this.getAlbums();
   }
 
-  searchSong(){
-    this.spotifyService.getSongsFromAlbum(this.albumHref).then(track => console.log(track));
+  searchTrack(){
+    this.spotifyService.getTrackFromAlbum(this.albumHref).subscribe(track => console.log(track));
   }
 
 }
