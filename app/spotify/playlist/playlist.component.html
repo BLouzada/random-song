@@ -1,8 +1,8 @@
 <div>
   <form (ngSubmit)="searchSong()" >
-    <label>Escolha uma playlist</label>
-    <select [(ngModel)]="playlistName" required>
-      <option *ngFor="let playlist of playlists" [value]="playlist">{{playlist}}</option>
+    <label>Escolha um album</label>
+    <select [(ngModel)]="albumHref" required>
+      <option *ngFor="let album of albums" [value]="album.href">{{album.name}}</option>
     </select>
     <button type="submit">Estou com sorte</button>
   </form>

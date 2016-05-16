@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { SpotifyService } from '../shared/spotify.service';
 
+import { Album } from '../shared/album'
+
 @Component({
   selector: 'playlist',
   templateUrl: 'app/spotify/playlist/playlist.component.html',
@@ -11,12 +13,12 @@ export class PlaylistComponent implements OnInit {
 
   constructor(private spotifyService: SpotifyService) { }
 
-  playlists: string[];
+  albums: Album[];
 
-  playlistName: string;
+  albumHref: string;
 
   getPlaylists() {
-    this.spotifyService.getPlaylists().then(playlists => this.playlists = playlists);
+    this.spotifyService.getAlbums().then(albums => this.albums = albums);
   }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   searchSong(){
-    console.log(this.playlistName);
+    this.spotifyService.getSongsFromAlbum(this.albumHref).then(track => console.log(track));
   }
 
 }
