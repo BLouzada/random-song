@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "npm install && tsc && node server.js"
+    "start": "tsc && node server.js"
   },
   "license": "ISC",
   "dependencies": {
