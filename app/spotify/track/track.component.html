@@ -1,1 +1,5 @@
-<a href={{openOnSpotify}} target="_blank">Listen on Spotify</a>
+<div *ngIf="track">
+  <span>Random song choosed: {{track.name}}</span><br>
+  <a href={{track.openOnSpotify}} target="_blank">Listen on Spotify</a><br>
+  <button (click)="goBack()">Back</button>
+</div>

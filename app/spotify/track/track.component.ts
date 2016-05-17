@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
 
 import { SpotifyService } from '../shared/spotify.service';
+import { Track } from '../shared/track'
 
 @Component({
   selector: 'rs-track',
@@ -13,11 +13,15 @@ export class TrackComponent implements OnInit {
 
   constructor(private routeParams: RouteParams, private spotifyService: SpotifyService) { }
 
-  openOnSpotify: string;
+  @Input()
+  track: Track;
 
   ngOnInit() {
-    let albumHref = this.routeParams.get('albumHref');
-    this.spotifyService.getTrackFromAlbum(albumHref).subscribe(track => this.openOnSpotify = track.openOnSpotify);
+    this.spotifyService.getTrackFromAlbum(this.routeParams.get('albumHref')).subscribe(track => this.track = track);
+  }
+
+  goBack() {
+    window.history.back();
   }
 
 }

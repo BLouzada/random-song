@@ -3,6 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 
 import { AlbumComponent } from './spotify/album/album.component';
 import { TrackComponent } from './spotify/track/track.component';
+import { AppSettings } from './app.settings';
 
 @Component({
   selector: 'random-song',
@@ -24,5 +25,5 @@ import { TrackComponent } from './spotify/track/track.component';
     component: TrackComponent
   }])
 export class AppComponent {
-  title = 'Random Song';
+  title = 'Random Song of ' + AppSettings.ARTIST_NAME;
 }

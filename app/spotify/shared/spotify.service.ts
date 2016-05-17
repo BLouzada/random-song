@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { Album } from './album'
 import { Track } from './track'
+import { AppSettings } from '../../app.settings';
 
 @Component({
   providers: [HTTP_PROVIDERS]
@@ -20,7 +21,7 @@ export class SpotifyService {
   constructor(private http: Http) { }
 
   getAlbums() {
-    this.http.get('https://api.spotify.com/v1/artists/0k17h0D3J5VfsdmQ1iZtE9/albums').subscribe(res => {
+    this.http.get('https://api.spotify.com/v1/artists/' + AppSettings.ARTIST_URI + '/albums').subscribe(res => {
       for (let album of res.json().items) {
         let alb = new Album();
         alb.href = album.href;
@@ -28,15 +29,15 @@ export class SpotifyService {
         this.albums.push(alb);
       }
     });
-
     return Promise.resolve(this.albums);
   }
 
+
   getTrackFromAlbum(albumHref: string): Observable<Track> {
-    return this.http.get(albumHref).map(this.extractData).catch(this.handleError);
+    return this.http.get(albumHref).map(this.mapToTrack).catch(this.handleError);
   }
 
-  private extractData(res: Response) {
+  private mapToTrack(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Response status: ' + res.status);
     }
@@ -47,9 +48,10 @@ export class SpotifyService {
     track.openOnSpotify = randomTrack.external_urls.spotify;
     return track;
   }
+
   private handleError(error: any) {
     let errMsg = error.message || 'Server error';
-    console.error(errMsg);
+    console.log(errMsg);
     return Observable.throw(errMsg);
   }
 }
