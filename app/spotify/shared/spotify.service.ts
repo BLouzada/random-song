@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Rx';
 
 import { Album } from './album'
 import { Track } from './track'
-import { AppSettings } from '../../app.settings';
 
 @Component({
   providers: [HTTP_PROVIDERS]
@@ -20,8 +19,10 @@ export class SpotifyService {
 
   constructor(private http: Http) { }
 
-  getAlbums() {
-    this.http.get('https://api.spotify.com/v1/artists/' + AppSettings.ARTIST_URI + '/albums').subscribe(res => {
+  getAlbums(artistUri: string) {
+    this.http.get('https://api.spotify.com/v1/artists/' + artistUri + '/albums').subscribe(res => {
+      if(this.albums.length)
+        this.albums = [];
       for (let album of res.json().items) {
         let alb = new Album();
         alb.href = album.href;

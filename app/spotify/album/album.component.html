@@ -1,9 +1,18 @@
 <div>
-  <form (ngSubmit)="searchTrack()" >
-    <label>Choose an album</label>
+  <form (ngSubmit)="searchTrack()">
+    <label>Choose an album from {{artistName}}</label>
     <select [(ngModel)]="albumHref" required>
       <option *ngFor="let album of albums" [value]="album.href">{{album.name}}</option>
     </select>
     <button type="submit">Random song</button>
+  </form>
+</div>
+<div>
+  <form (ngSubmit)="updateArtist()" >
+    <label>Artist Name: </label>
+    <input type="text" [(ngModel)]="artistName" /><br>
+    <label>Artist Spotify Uri: </label>
+    <input type="text" [(ngModel)]="artistUri" />
+    <button type="submit">Update artist</button>
   </form>
 </div>
