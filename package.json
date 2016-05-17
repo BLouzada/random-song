@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "tsc && concurrently \"node server.js\" ",
-    "tsc": "tsc"
+    "start": "tsc && node server.js"
   },
   "license": "ISC",
   "dependencies": {
