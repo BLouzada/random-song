@@ -1,13 +1,10 @@
 {
   "name": "random-song",
   "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "lite": "lite-server",
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "start": "tsc && concurrently \"node server.js\" ",
+    "tsc": "tsc"
   },
   "license": "ISC",
   "dependencies": {
@@ -28,8 +25,7 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
-    "lite-server": "^2.2.0",
     "typescript": "^1.8.10",
-    "typings": "^0.8.1"
+    "express": "^4.13.4"
   }
 }
