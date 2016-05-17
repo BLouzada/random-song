@@ -21,6 +21,7 @@ To change artist, update [app.settings.ts](https://github.com/ndeitch/random-son
 
 ### TODO's
 
+* Add index.ts to simplify imports on components
 * Improve layout (There is no style 'til now)
 * Add tests (any kind of tests)
 * Add two way data-binding on artist and artist-spotify-uri to dynamically update it.
