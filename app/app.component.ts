@@ -11,8 +11,7 @@ import { AppSettings } from './app.settings';
   <h1>{{title}}</h1>
   <router-outlet></router-outlet>
   `,
-  directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([{
   path: '/album',

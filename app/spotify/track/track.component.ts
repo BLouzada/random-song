@@ -6,8 +6,7 @@ import { Track } from '../shared/track'
 
 @Component({
   selector: 'rs-track',
-  templateUrl: 'app/spotify/track/track.component.html',
-  providers: [SpotifyService]
+  templateUrl: 'app/spotify/track/track.component.html'
 })
 export class TrackComponent implements OnInit {
 

@@ -9,7 +9,6 @@ import { TrackComponent } from '../track/track.component';
 @Component({
   selector: 'rs-album',
   templateUrl: 'app/spotify/album/album.component.html',
-  providers: [SpotifyService],
   directives: [TrackComponent]
 })
 export class AlbumComponent implements OnInit {
