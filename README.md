@@ -18,10 +18,3 @@ And subsequently run `node server.js` task that starts a express server to run A
 ## Changing artist
 
 To change artist, update [app.settings.ts](https://github.com/ndeitch/random-song/blob/master/app/app.settings.ts) to get artist's uri follow [this instructions](https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids). Currently it isn't dynamic, so update the file and restart the server.
-
-### TODO's
-
-* Add index.ts to simplify imports on components
-* Improve layout (There is no style 'til now)
-* Add tests (any kind of tests)
-* Add two way data-binding on artist and artist-spotify-uri to dynamically update it.
